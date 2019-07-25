@@ -1,0 +1,72 @@
+﻿<div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <div ng-include='"templates/sidenav.html"'></div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">Catalogs</h3></div>
+            <div class="panel-body" style="text-align: center;">
+                
+<!--  AKI va lo nuestro Content-->
+                <div ng-controller="scoresCtCtrl">
+                    <table class="display row-border hover order-column table table-striped table-bordered dataTable table-intel " >
+                        <thead>
+                            <tr>
+                                <th style="width:35%">Description</th>
+                                <th style="width:35%">Active</th>
+                                <th style="width:28%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="score in scores">
+                                <td class="ng-hide"> {{ score.id }}</td>
+                                <td>
+                                    <!-- editable username (text with validation) -->
+                                    <span editable-text="score.name" e-name="name" e-form="rowform" onbeforesave="checkName($data, score.id)">
+                                        {{ score.name }}
+                                    </span>
+                                </td>
+                               <!-- <td>
+                                    <span editable-select="course.status" e-name="status" e-form="rowform"
+                                          e-ng-options="x.value as x.label for x in statuses.availableOptions"
+                                          e-required>
+                                    </span>
+                                    {{score.status === "A" ? "Active" : "Inactive"}}
+                                </td> -->
+                                <td>
+                                    <!-- editable status (select-local) -->
+                                    <span editable-select="score.status" e-name="status" e-form="rowform" e-ng-options="s.value as s.text for s in statuses">
+                                        {{ showStatus(score) }}
+                                    </span>
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == score" onbeforesave="saveScore($data, score.id)">
+                                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                            save
+                                        </button>
+                                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                            cancel
+                                        </button>
+                                    </form>
+                                    
+                                    <div class="buttons" ng-show="!rowform.$visible">
+                                        <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                                         
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+  
+                      </table>
+                    <button class="btn btn-default" ng-click="isEdit = false; addScore()">Add row</button>
+                </div>
+
+<!--  termina sra Content --->
+                
+            </div>
+        </div>
+    </div>
+</div> 
+	

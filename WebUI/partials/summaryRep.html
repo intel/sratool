@@ -1,0 +1,69 @@
+
+ 
+    <div class="row">
+		<div class="col-sm-1 col-md-1">		 
+		</div>
+	    <div class="col-sm-3 col-md-3">           
+	     <div ng-include='"templates/sidenav.html"'></div>
+        </div>
+		<div class="col-sm-7 col-md-7" >
+		     <div class="panel panel-primary">
+              <div class="panel-heading" ><h3 class="panel-title">Summary Reports</h3></div>
+               <div class="panel-body" style="text-align: center;">
+                    
+                               <nvd3 ng-controller="summaryStatusCtrl" options="options" data="data"></nvd3>
+                            
+               </div>
+               <div  ng-controller="ocultaCtrl" ng-hide="oculta" >
+                   <table>
+                       <tr>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">Open Source</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusOSCtrl" options="options" data="data"></nvd3>
+                               </div>
+
+                           </td>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">Web-Services</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusHWCtrl" options="options" data="data"></nvd3>
+                               </div>
+                           </td>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">Other SW(Drivers, Firmware, etc)</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusLibCtrl" options="options" data="data"></nvd3>
+                               </div>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">Console Apps</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusLowCtrl" options="options" data="data"></nvd3>
+                               </div>
+                           </td>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">Web Apps</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusSecCtrl" options="options" data="data"></nvd3>
+                               </div>
+                           </td>
+                           <td>
+                               <div class="panel-heading"><h5 class="panel-title">OWASP SRA</h5></div>
+                               <div class="panel-body" style="text-align: center;">
+                                   <nvd3 ng-controller="summaryStatusWebCtrl" options="options" data="data"></nvd3>
+                               </div>
+                           </td>
+                       </tr>
+                   </table>
+               </div>
+		  	  
+	    </div>
+        </div> 
+	</div>
+	
+     
+
+	

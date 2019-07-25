@@ -1,0 +1,97 @@
+﻿<div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <div ng-include='"templates/sidenav.html"'></div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div style ="height:90%;" class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">Security Risk Assessment</h3></div>
+            <div class="panel-body" style="text-align: center;">
+                <div ng-controller="tabsCtrl"  class="nav nav-tabs text-left">
+                    <div   bs-active-pane="tabs.activeTab" bs-tabs>
+                        <div data-title="{{ tab1.title }}" name="{{ tab1.title }}"  bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">                            
+                            <div ng-controller="editrequestCtrl as projectInfo">
+                                <div style="width:98%; padding : 20px;">
+                                    <form novalidate>                                         
+                                        <formly-form model="projectInfo.srainfo"  fields="projectInfo.srainfoFields" form="projectInfo.srainfoForm">
+                                            <div style="text-align:right;">
+                                              <button type="submit" ng-click="projectInfo.onSubmit()"   class="btn btn-primary" ng-disabled="submitWhenFormReady || projectInfo.srainfoForm.$invalid">Update</button>
+                                            </div>
+                                        </formly-form>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                         
+                        <div tab-detail data-title="{{ tab2.title }}" name="{{ tab2.title }}" bs-pane  style="width:100%; padding:5px; border-left: 1px solid lightgray; border-right: 1px solid lightgray" disabled="{{ tab2.disabled }}" >
+                           <div ng-controller="editVerticalTabsCtrl as editrequestInfo " >
+                            <form  name="editrequestForm" >
+                               
+                                    <table style="width:100%; height:100%;" class="nav nav-tabs ">
+                                        <tr>
+                                            <td style="width:87%; height:100%" class="tableWholeBorder">
+
+                                                <div class="text-center" ng-show="SelTIndex == $index" ng-repeat="item2 in riskfactor">
+                                                    <div class="guidelines">
+                                                        {{item2.sucesivo}} -  {{item2.riskfactor}}
+                                                    </div>
+
+                                                    <label style="font-size:smaller; padding-left:20px; margin-bottom: 20px;">
+                                                        {{item2.guidance}}
+                                                    </label>
+
+                                                    <div class="text-left">
+                                                        <label style="padding-left:10px; color: green;">Scoring Guidelines:</label>
+                                                        <select ng-model="editrequestInfo.idValueGuides[$index]" style="width:97%; margin-left:10px; height:35px;" ng-options="scoreguideperRisk.value_guideline for scoreguideperRisk  in scoreguide | filter : istheriskfactor" required></select>                                                       
+                                                    </div>
+                                                    <!-- Reasoning and Recommendations per item-->
+                                                    <div style="text-align: left;  padding-left:10px; padding-bottom:10px;padding-top:20px;">
+                                                        <label style="padding:2px; color: green;">*Reasoning:</label>
+                                                        <!--   <textarea rows="4" style="width:98%;" ng-model="reasoning" ng-class="{ 'has-error' : userFieldForm.email.$invalid }" required></textarea>  -->
+                                                        <textarea rows="4" style="width:98%;" ng-model="editrequestInfo.srarequestinfo.reasoning[$index]" ></textarea>
+                                                    </div>
+
+                                                    <div style="text-align: left; padding-left:10px; padding-bottom:20px;">
+                                                        <label style="padding:2px; color: green;">*Recommendations:</label>
+                                                        <textarea rows="4" style="width:98%;" ng-model="editrequestInfo.srarequestinfo.recommendations[$index]" ></textarea>
+
+                                                    </div>
+                                                    <!--end reasoning -->
+                                                </div>
+                                            </td>
+                                            <td style="margin-left:20px;">
+                                                <table ng-repeat="item2 in riskfactor">
+                                                    <tr>
+                                                        <td style="width:12%;" ng-class="getTClass($index)" ng-click="switchTTab($index)">Step {{item2.sucesivo}}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                              
+                                                <!--  save partial request-->
+                                                <div style="text-align:left; margin-bottom:15px; margin-left:15px; float: left;">                                                    
+                                                    <button type="button" ng-click="savepartial()" ng-disabled="!editrequestForm.$invalid" class="btn btn-primary">Save Partial</button>
+                                                </div>
+                                                <!--  Submit request-->
+                                                <div style="text-align:right; margin-bottom:15px; margin-right:15px; float: right;"> <!-- -->
+                                                    <button type="button" ng-click="editrequestInfo.onSubmit()" ng-disabled="editrequestForm.$invalid || validate_srascoreVal" class="btn btn-primary">Submit</button>  
+ 
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                            </form>
+                           </div>                         
+                        </div>
+                        <div data-title="{{ tab3.title }}" name="{{ tab3.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

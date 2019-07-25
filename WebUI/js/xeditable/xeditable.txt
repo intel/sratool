@@ -1,0 +1,12 @@
+
+Install angular-xeditable from 
+
+/*!
+angular-xeditable - 0.5.0
+https://github.com/vitalets/angular-xeditable
+
+MIT License
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
+ 
+ */

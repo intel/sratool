@@ -1,0 +1,41 @@
+[{"item":"Search", "subitems": [{"item":"Search Engine", "reflink":"sra/searchengine"}, {"item":"Reports", "reflink":"sra/summaryByStatus"} ]}
+                               ,
+ {"item":"New SRA", "subitems":  [      {"item":"SSG SRA", "reflink":"sra/ssgsra/7"}, 
+                                        {"item":"Opensource SRA", "reflink":"sra/ssgsra/1"}, 
+                                        {"item":"HW/SW-Co-design SRA", "reflink":"sra/ssgsra/2"}, 
+                                        {"item":"Libraries and Tools SRA", "reflink":"sra/ssgsra/3"}, 
+                                        {"item":"Low-Level/Systems SRA", "reflink":"sra/ssgsra/4"},
+                                        {"item":"Web/Services/Apps SRA", "reflink":"sra/ssgsra/6"}
+  
+  ]
+                                },
+ {"item":"TEST", "subitems": [{"item":"SSG SRA MockUp", "reflink":"sra/mockssgsra"} ]}	,								
+ {"item":"Admin", "subitems": [{"item":"SRA Tools - Version Catalog", "reflink":"sra/sratypes"} ]}	,
+
+  {
+    "item": "Access Management",
+    "subitems": [
+      {
+        "item": "Permissions",
+        "reflink": "sra/access"
+      }
+    ]
+  }	,
+
+  {
+    "item": "SDL - OTC",
+    "subitems": [
+      {
+        "item": "Status Report",
+        "reflink": "sdl/statusreport"
+      },
+      {
+        "item": "Summary Report",
+        "reflink": "sdl"
+      }
+      
+    ]
+  
+  }	 
+								
+								]

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html class="no-js"> 
+<head>
+    <!-- MetaInfo -->
+    <title>Security Admin tools Hub</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Security Admin tools Hub">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- RMM Routing Purposes -->
+	<base href="/"/> 
+
+    <link rel="stylesheet" href="css/app.css">		
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/xeditable.css">
+   <link rel="stylesheet" type="text/css" href="css/dataTables.foundation.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.dataTables.min.css">
+   <link rel="stylesheet" type="text/css" href="js/angularDatatables/plugins/bootstrap/datatables.bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+     
+	
+	<!-- Dependencies - DataTables, BootStrap, jqPlot -->
+    <script type="text/javascript" src="js/Datatables/jquery-1.12.0.min.js"></script>	
+	<script type="text/javascript" src="js/Datatables/jquery.dataTables.min.js"></script>
+       
+	<script type="text/javascript" src="js/angularJs/angular.min.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-strap.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-strap.tpl.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-strap.docs.tpl.js"></script>
+    
+
+     <script type="text/javascript" src="js/angularJs/angular-route.js"></script>
+    <script type="text/javascript" src="js/angularJs/angular-resource.js"></script>
+	<script type="text/javascript" src="js/angularDatatables/angular-datatables.min.js"></script>
+	<script type="text/javascript" src="js/angularDatatables/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/Datatables/dataTables.columnFilter.js"></script>
+    <script type="text/javascript" src="js/angularDatatables/plugins/columnfilter/angular-datatables.columnfilter.min.js"></script>
+    <script src="js/Datatables/dataTables.buttons.min.js"></script>
+    <script src="js/Datatables/buttons.colVis.min.js"></script>
+    <script src="js/Datatables/buttons.flash.min.js"></script>
+    <script src="js/Datatables/buttons.html5.min.js"></script>
+    <script src="js/Datatables/buttons.print.min.js"></script>
+    <script type="text/javascript" src="js/angularDatatables/angular-datatables.buttons.min.js"></script>
+    <script src="js/Datatables/dataTables.lightColumnFilter.min.js"></script>
+    <script src="js/angularDatatables/angular-datatables.light-columnfilter.min.js"></script>
+
+
+    <script type="text/javascript" src="js/charts/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/charts/nv.d3.min.js"></script>
+    <script type="text/javascript" src="js/fileSaver/FileSaver.min.js"></script>
+
+    <script type="text/javascript" src="js/charts/angular-nvd3.min.js"></script>
+   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>-->
+    <link rel="stylesheet" href="js/charts/nv.d3.min.css" />
+
+    <script type="text/javascript" src="js/xeditable/xeditable.min.js"></script>
+    <!-- Application Dependencies -->
+    <script src="js/formly/api-check.js"></script>
+    <script src="js/formly/formly.min.js"></script>
+    <script src="js/formly/angular-formly-templates-bootstrap.js"></script>
+    
+    <script type="text/javascript" src="js/angularJs/angular-modal-service.js"></script>
+    
+    <script src="js/loadingbar/loading-bar.js"></script>
+    <link href='css/loading-bar.css' rel='stylesheet' />
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes"></script>
+
+</head>
+
+
+<body ng-app="SecurityAdminToolsHub">
+
+    <div style="margin-top:-53px;" ng-include='"templates/header.html"'></div> 
+    <div class="container-fluid">
+        <div ng-view>
+
+        </div>
+    </div>
+    <div ng-include='"templates/footer.html"'></div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/menusCtrl.js"></script>
+
+    <script type="text/javascript" src="js/angularJs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script type="text/javascript" src="js/angularJs/ajaxLoader.js"></script>
+    
+    <script type="text/javascript" src="js/searchengineCtrl.js"></script>
+    <script type="text/javascript" src="js/summaryRepCtrl.js"></script>
+    <script type="text/javascript" src="js/prDetailsCtrl.js"></script>
+    
+    <script type="text/javascript" src="js/catalogsCtrl.js"></script>
+    
+    <script type="text/javascript" src="js/services.js"></script>    
+    <script type="text/javascript" src="js/ssgsraRequestCtrl.js"></script>
+    <script type="text/javascript" src="js/sdlReportCtrl.js"></script>
+    <script type="text/javascript" src="js/mocksgsra.js"></script>
+    <script type="text/javascript" src="js/sdlsummary.js"></script>
+<script src="js/directives.js"></script>        
+</body>
+</html>

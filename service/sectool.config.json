@@ -1,0 +1,9 @@
+{
+
+  
+
+  "tcpServer":"10.219.16.55",
+  "port":"1201",
+  "logfile":"citagent.log",
+  "msgreturned":"ConfigData"
+}

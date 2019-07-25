@@ -1,0 +1,276 @@
+   <div class="row">
+		 
+	    <div style="margin-left:15px;" class="col-sm-3 col-md-3">           
+	     <div ng-include='"templates/sidenav.html"'></div>
+            <div ng-include='"templates/modalconfirm.html"'></div>
+        </div>
+		<div class="col-sm-8 col-md-8" >
+		     <div class="panel panel-primary">
+              <div class="panel-heading" ><h3 class="panel-title">Security Risk Assessment</h3></div>
+               <div class="panel-body" style="text-align: center;">
+                   <div ng-controller="requestCtrlTabs" class="nav nav-tabs text-left"  >
+                       <div  bs-tabs>
+                           <div  data-title="{{ tab4.title }}" name="{{ tab4.title }}" bs-pane style="padding-top:5px; border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                               <div class="panel panel-primary">
+                                   <div class="panel-heading"><h3 class="panel-title">General Information</h3></div>
+                                   <div class="panel-body" style="text-align: center;">
+                                      
+
+                                       <table class="display row-border hover order-column table table-striped table-bordered dataTable table-intel ">
+                                           <tr>
+                                               <td style="width:50%; text-align: left; vertical-align: middle;">
+                                                   <table class="display row-border hover order-column table table-striped table-bordered dataTable table-intel">
+                                                       <tr><td style="color:#ffa510; font-weight: bold; width:35%; text-align: left;">Project: </td><td style="font-weight: bold; text-align: left;">{{ProjectName}}</td>
+                                                       <tr ng-hide="sra_type == 6"><td style="color:green; font-weight: bold; width:35%; text-align: left;">Impact Score</td><td style="text-align: left;">{{ProjectGeneral[0].impact_score}}</td>
+                                                       <tr ng-hide="sra_type == 6"><td style="color:green; font-weight: bold; width:35%; text-align: left;">Probability Score</td><td style="text-align: left;">{{ProjectGeneral[0].prob_score}}</td>
+                                                       <tr><td><label style="font-weight:bolder; color: darkOrange;">SRA Score</label></td>
+                                                       <td style="font-size:medium; font-weight:bolder; background-color: slategray ; color:white;">{{ProjectGeneral[0].SRA_Score}}</td></tr>
+                                                       <tr><td><label style="color: darkgreen;">PSEC</label></td><td>{{ProjectGeneral[0].PSEC}}</td></tr>
+                                                       <!--<tr><td><label style="color: darkgreen;">SDL Link</label></td><td>{{ProjectGeneral[0].SDL_Url}}</td></tr>-->
+                                                       <tr><td><label style="color: darkgreen;">SDL Link</label></td><td><a target="_blank" href={{urlproject}}>Goto SDL for the Project</a></td></tr>
+                                                   </table>
+
+
+                                               <td style="width:50%; text-align: center;">
+                                                   <div id="GraphResults" name="GraphResults" style="width:100%; position: relative;" ng-show="sra_type != 6">
+
+                                                       <img  z-index=10 ng-src="../images/radio-checked.png" title="Impact Score: {{xs}}, Probability Score: {{ys}}" ng-style="indicador()" resize />
+
+                                                       <img z-index=0 ng-src="../images/srameter.png" alt="some_text" style="width:90%;height:50%;">
+
+                                                   </div>
+
+                                                   <div style="margin: 10%; text-align:center;vertical-align:middle;" ng-show="sra_type == 6">
+                                                       <table><tr><td style="padding:10px;vertical-align:top;font-size:medium;background-color:#0000ffff;">Vector 1 Risk Level:&nbsp&nbsp<b>{{xs}}%</b></td></tr></table>
+                                                       <table style="width:90%; text-align:center;">
+                                                           <tr>
+                                                               <!--<td style="font-size:xx-small;width:58%;background-color:#666633; color:white; text-align:centre">Vector 1 Risk Level<td><td style="width:42%;background-color:#f6f6ee; color:white; text-align:centre">*<td> -->
+                                                               <td style="border-bottom: 6px solid #330033; width:{{xs}}%;background-color:#0000ffff; color:black; text-align:centre">
+                                                               <td>
+                                                               <td style="width:{{100 - xs}}%;background-color:#f6f6ee; color:white; text-align:centre">
+                                                               <td>
+                                                           </tr>
+                                                       </table>
+                                                       <table style="width:90%; font-size:medium;text-align:center;">
+                                                           <tr>
+                                                               <td style="width:20%;color:black;background-color:#2eb82e;text-align:centre">Low</td>
+                                                               <td style="width:35%;color:black;background-color:#ffff80;text-align:centre">Medium</td>
+                                                               <td style="width:30%;color:white;background-color:#e65c00;text-align:centre">High</td>
+                                                               <td style="width:15%;color:white;background-color:#cc0000;text-align:centre">Critical</td>
+                                                           </tr>
+                                                       </table>
+
+                                                   </div>
+
+                                               </td>
+                                           </tr>
+                                       </table>
+
+
+
+
+                                        <table class="display row-border hover order-column table table-striped table-bordered dataTable table-intel ">
+                                          <!-- <tr><td><label style="color: darkgreen;">Project Name</label></td><td><b>{{ProjectGeneral[0].Project_Name}}</b></td></tr>-->
+                                            
+                                            <tr><td><label style="color: darkgreen;">SRA Owner</label></td><td>{{ProjectGeneral[0].SRA_Owner}}</td>
+                                            <td><label style="color: darkgreen;">Project Owner </label></td><td>{{ProjectGeneral[0].Project_Owner}}</td></tr>
+                                            <tr><td><label style="color: darkgreen;">Created By</label></td><td>{{ProjectGeneral[0].CreatedBy}}</td>
+                                            <td><label style="color: darkgreen;">Created On</label></td><td>{{ProjectGeneral[0].Created}}</td></tr>
+                                            
+                                            
+                                            <tr><td><label style="color: darkgreen;">Modified By </label></td><td>{{ProjectGeneral[0].ModifiedBy}}</td>
+                                            <td><label style="color: darkgreen;">Modified</label></td><td>{{ProjectGeneral[0].Modified}}</td></tr>
+                                             
+                                           
+                                           
+                                            
+                                        </table> 
+                                       <table class="row-border text-center" style="width:100%; color:darkred;">
+                                           <tr><td><div  ng-show="attr0 ==1" style="font-weight:bolder; color:darkorange;font-size:large;">Project Attributes</div></td></tr>
+                                           <tr><td><div ng-show="attr1==true">- It is a Hosted Service</div></td></tr>
+                                           <tr><td><div ng-show="attr2==true">- Being developed using C/C++</div></td></tr>
+                                           <tr><td><div ng-show="attr3==true">- Releasing Source Code only</div></td></tr>
+                                           <tr><td><div ng-show="attr4==true">- Pursues external certification(s) for the product / service</div></td></tr>
+                                           <tr><td><div ng-show="attr5==true">- Expose APIs / Interfaces</div></td></tr>
+                                           <tr><td><div ng-show="attr6==true">- SAFE approved patching mechanism</div></td></tr>
+                                       </table>
+
+                                   </div>
+                               </div>
+                               
+                           </div>
+                           <div  data-title="{{ tab2.title }}" name="{{ tab2.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                               <div style="float:right;padding:10px;">
+                                   
+                                   
+                                       <!--   -->
+                                       <table>
+                                           <tr>
+                                           <td ng-show="inactive == 0">
+                                               <button style="color: white; font-weight:bold;" type="submit" ng-click="sendToExcel('#exportResults')" class="btn btn-primary">Download Excel</button>&nbsp;&nbsp;&nbsp; 
+                                           </td>
+                                           <td ng-show="inactive == 0 && inactive2" >
+                                               <button style="border-color:yellow;  background-color:darkgray; color: black; " type="submit" ng-click="inactiveSRA()" class="btn btn-primary">Delete This SRA</button>
+                                           </td>
+                                           
+                                           <td ng-show="inactive == 1" style="text-align:center; font-weight:bold; color:darkred;" >Delete this SRA?</td>
+                                           </tr>
+                                           <tr ng-show="inactive == 1" >
+                                               <td ng-show="inactive == 0"></td><td ng-show="inactive == 0"></td>
+                                               <td>
+                                                   <table style="border-collapse: separate; border-spacing: 5px;">
+                                                       <tr>
+                                                           <td><button style="color: white; font-weight:bold;" type="submit" ng-click="doInactive()" class="btn btn-primary">Delete&nbsp;&nbsp;&nbsp;</button></td>
+                                                           <td><button style="color: white; font-weight:bold;" type="submit" ng-click="cancelInactive()" class="btn btn-primary">Cancel</button></td>
+                                                       </tr>
+                                                   </table>
+                                               </td>
+                                           </tr>
+                                       </table>
+                                   
+                               </div>
+                             <div id="exportResults" style="text-align:center;">
+
+                                 <table style="width:99%;" class="display row-border hover order-column table table-striped table-bordered dataTable table-intel">
+                                     <tr>
+                                         <td style="color:green; font-size:smaller; font-weight: bold; width:20%; ">Project: </td>
+
+                                         <td><label style="font-size:smaller; width:15%;  font-weight:bolder; color: green;">SRA Score</label></td>
+                                         <td style="color:green;width:15%;  font-size:smaller; font-weight: bold;">Impact Score</td>
+                                         <td style="color:green; width:15%; font-size:smaller; font-weight: bold;  ">Probability Score</td>
+                                         <td><label style="font-size:smaller;width:35%;  color: darkgreen;">PSEC</label></td>
+
+                                     </tr>
+                                     <tr ng-hide="sra_type == 6">
+                                         <td style="font-size:smaller; font-weight: bold; ">{{ProjectName}}</td>
+                                         <td style="font-weight:bolder; background-color: #0071C5 ; color:white;">{{ProjectGeneral[0].SRA_Score}}</td>
+                                         <td style="color:darkorange;">{{ProjectGeneral[0].impact_score}}</td>
+
+                                         <td style="color:darkorange;">{{ProjectGeneral[0].prob_score}}</td>
+                                         <td>{{ProjectGeneral[0].PSEC}}</td>
+                                     </tr>
+                                     <tr style="font-weight:bolder; background-color: white ; color:white;">
+                                         <td></td>
+                                         <td></td>
+
+                                         <td></td>
+                                         <td></td>
+                                         <td></td>
+                                     </tr>
+                                 </table>
+
+                                  <table style="width:99%; table-layout: fixed;" id="test" class="display row-border hover order-column table table-striped table-bordered dataTable table-intel ">
+                                   <thead class="text-center">
+                                       <tr>
+                                           <th style="width:18%;">Risk Factor</th>
+                                           <th style="width:18%;">Score Result</th>
+                                           <th style="width:30%;">Reasoning</th>
+                                         <!--  <th style="width:30%;">Recommendations</th> -->
+                                       </tr>
+                                   </thead>
+                                   <tbody>                                       
+                                           <tr ng-repeat="item in ProjectDetails" ng-class="getHClass()">                                               
+                                                   <!-- <td ng-style="myObj"></td>   -->
+                                                   <td style="width:18%; word-wrap:break-word;"><small>{{item.Risk_Factor}}</small></td>
+                                                   <td style="width:18%;word-wrap:break-word;"><small>{{item.Score}}</small></td>
+                                                   <td style="width:30%;word-wrap:break-word; background-color: slategray ; color:whitesmoke;"><small>{{item.Reasoning}}</small></td>
+                                                 <!--  <td style="width:30%;word-wrap:break-word;"><small>{{item.Recommendations}}</small></td> -->
+                                                   <!-- <td style="width:15%;"><small>{{item.Recommendations}}</small></td> -->                                               
+                                       </tr>
+
+                                   </tbody>
+                                   <tfoot></tfoot>
+                               </table>
+                             </div>
+
+                           </div>
+                          
+                           <!--  Actions -->
+                           <div data-title="{{ tab5.title }}" name="{{ tab5.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                               <div class="text-center">
+                                  
+                                   <br /><br /><!--{{ProjectGeneral[0].SRA_Score}} -->
+                                   <table style="width:99%; table-layout: fixed;" id="test" class="table  table-intel ">
+                                       <thead class="text-center">
+                                           <tr>
+                                               <th style="width:18%; text-align:center;">SDL#</th>
+                                               <th style="width:18%; text-align:center;">Action</th>
+                                           <!--    <th ng-if="ProjectGeneral[0].SRA_Score == 'Low'" style="width:10%; text-align:center;">Low Score</th>
+                                               <th ng-if="ProjectGeneral[0].SRA_Score == 'Medium'" style="width:10%;text-align:center;">Medium Score</th>
+                                               <th ng-if="ProjectGeneral[0].SRA_Score == 'High'" style="width:10%;text-align:center;">High Score</th> -->
+                                               <th style="width:30%;">Guidance</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           <tr ng-if="(ProjectGeneral[0].sra_type == 7) || (ProjectGeneral[0].SRA_Score == 'Low' && item.Low_Score == 1) || (ProjectGeneral[0].SRA_Score == 'Medium' && item.Medium_Score == 1) || (ProjectGeneral[0].SRA_Score == 'High' && item.High_Score == 1) || (ProjectGeneral[0].SRA_Score == 'Critical' && item.High_Score == 1)" ng-repeat="item in sdlActions" ng-class="getActionsClass()">
+                                           <!-- <tr  ng-repeat="item in sdlActions" ng-class="getActionsClass()"> -->
+                                               <!-- <td ng-style="myObj"></td>   -->
+                                               <td style="width:18%; word-wrap:break-word; text-align:center;">{{item.sdlaction}}</td>
+                                               <td style="width:18%;word-wrap:break-word;text-align:left;">
+                                                   <div ng-if="item.actionlink != ''">
+                                                       <small><a target="_blank" href="{{item.actionlink}}">{{item.action}}</a></small>
+                                                   </div>
+                                                   <div ng-if="item.actionlink == ''">
+                                                       <small>{{item.action}}</small>
+                                                   </div>
+                                               </td>
+
+                                               <!--     <td ng-if="ProjectGeneral[0].SRA_Score == 'Low'"  style="width:10%;word-wrap:break-word; background-color: slategray ; color:whitesmoke;"><small>{{item.Low_Score}}</small></td>
+             <td ng-if="ProjectGeneral[0].SRA_Score == 'Medium'" style="width:10%;word-wrap:break-word; background-color: slategray ; color:whitesmoke;"><small>{{item.Medium_Score}}</small></td>
+             <td ng-if="ProjectGeneral[0].SRA_Score == 'High'"style="width:10%;word-wrap:break-word; background-color: slategray ; color:whitesmoke;"><small>{{item.High_Score}}</small></td> -->
+
+                                               <td style="width:30%;word-wrap:break-word;text-align:left;">
+                                                   <div ng-if="item.commentlink" !=''>                                                       
+                                                       <small><a target="_blank" href="{{item.commentlink}}">{{item.comments}}</a></small>
+                                                   </div>
+                                                   <div ng-if="item.commentlink == ''">
+                                                       <small>{{item.comments}}</small>
+                                                   </div>
+
+                                               </td>
+                                               <!-- <td style="width:15%;"><small>{{item.Recommendations}}</small></td> -->
+                                           </tr>
+                                       </tbody>
+                                       <tfoot></tfoot>
+                                   </table>
+                                   <br /><br />
+                               </div>
+                           </div>
+                           <!--  End Actions-->
+
+                           <div  data-title="{{ tab3.title }}" name="{{ tab3.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                               <div class="text-center">
+                                 <br/><br/>
+                                 <b><medium>Probability score interpretation</medium></b></br>
+                                   <small>
+                                       <b>Unlikely</b> - Probability less than 20%.	<br />
+                                       <b>Possible</b> - Probability between 21% to 55%.<br />
+                                       <b>Likely</b> - Probability between 56% to 85%.	<br />
+                                       <b>Almost Certain</b> - Probability above 85%.<br />
+                                   </small>
+                                   <br /><br />
+                                   <b><medium>Impact score interpretation</medium></b>	<br />	
+                                   <small>
+                                       <b>Minor</b> - Some disruption within the normal functions. Manageable risk with minimum estimated cost. (Impact level <35) Moderate - Immediate time/resource reallocation will be necessary with a moderate estimated cost. (Impact level between 35 and 60)		<br />
+                                       <b>Major</b> -  Major disruption to operations and significant risk of failure to part of the business is possible. (Impact level between 61 and 90)		<br />
+                                       <b>Severe</b> - Significant going concerns exists with the business and the risk is classified as severe. (Impact level > 90)		<br />
+                                   </small>
+                                   <br /><br />
+                               </div>
+                           </div>
+
+
+
+                       </div>
+
+                   </div>
+
+
+
+
+               </div>
+	    </div>
+        <div style="width:=100%; height:100%;" id="GraphResults2" resize7></div>
+        </div> 
+	</div>
+

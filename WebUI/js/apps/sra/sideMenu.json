@@ -1,0 +1,22 @@
+[{"item":"Search", "subitems": [{"item":"Search Engine", "reflink":"sra/searchengine"}, {"item":"Reports", "reflink":"sra/summaryByStatus"} ]}
+                               ,
+ {"item":"New SRA", "subitems":  [     
+                                        {"item":"OWASP SRA", "reflink":"sra/ssgsra/5"}
+                                        
+  
+  ]
+                                },
+ 					
+ {"item":"Admin", "subitems": [{"item":"SRA Tools - Version Catalog", "reflink":"sra/sratypes"} ]}	,
+
+  {
+    "item": "Access Management",
+    "subitems": [
+      {
+        "item": "Permissions",
+        "reflink": "sra/access"
+      }
+    ]
+  }	
+								
+								]

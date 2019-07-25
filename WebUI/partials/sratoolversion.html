@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <div ng-include='"templates/sidenav.html"'></div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div ng-controller="riskfactortypeCtrl" class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">{{sranname}} - {{sraversion}}</h3></div>
+            <div class="panel-body" style="text-align: center;">
+
+                <table ng-controller="riskfactortypesCtrl" style="width:99%; table-layout: fixed;" id="test" class="table table-striped table-intel ">
+                    <thead class="text-center">
+                        <tr>
+                            <th style="width:45%; word-wrap:break-word; text-align:center;">Risk Factor</th>
+                            <th style="width:45%; word-wrap:break-word; text-align:center;">Guideline</th>
+                            <th style="width:8%; text-align:center;">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in sratype">
+                        <tr  ng-if="sratype[$index].riskfactor!=sratype[$index-1].riskfactor"   ng-class="getActionsClass()">
+                            <!-- <td ng-style="myObj"></td>   -->
+                            <td style="font-weight:bold; color:darkgreen; width:45%;word-wrap:break-word;text-align:left;">
+                                 {{item.riskfactor}}
+                           </td>
+                         </tr>
+                         <tr>
+                          <td></td>     
+                          <td style="width:45%; word-wrap:break-word; text-align:center;">{{item.value_guideline}}</td>
+                          <td style="width:8%; word-wrap:break-word; text-align:center; color:orangered;">{{item.score}}</td>
+                        </tr>
+                     </tbody>
+                    <tfoot></tfoot>
+            </table>
+
+        </div>
+        </div>
+    </div>
+</div>

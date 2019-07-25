@@ -1,0 +1,287 @@
+﻿<div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <div ng-include='"templates/sidenav.html"'></div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div style="height:80%;" class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">Security Risk Assesment</h3></div>
+            <div class="panel-body" style="text-align: center;">
+                <div  ng-controller="tabsCtrl" class="nav nav-tabs text-left">
+                    <div ng-controller="mockssgsraVerticalTabsCtrl as requestInfo" >
+                    <!---->
+                    <div  bs-active-pane="tabs.activeTab" bs-tabs>
+                       
+                            <div data-title="{{ tab1.title }}" name="{{ tab1.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+
+                                <div style="width:98%; padding : 20px;">
+                                    <form novalidate>
+                                        <formly-form model="projectInfo.srainfo" fields="projectInfo.srainfoFields" form="projectInfo.srainfoForm">
+                                            <div style="width:100%; padding:20px;">
+                                                <label>SSG PSEC:</label>
+                                                <select ng-model="requestInfo.selectedssgsra" style="float:right; width:85%;" required>
+                                                    <option ng-repeat="x in ssgsras" value="{{x.valor}}">{{x.name}}</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="well">
+                                                <label ng-repeat="attribute in attributes" style="display: block;">
+                                                    <input type="checkbox" checklist-model="requestInfo.attrefective.values" checklist-value="attribute.value"> {{attribute.name}}
+                                                </label>
+
+                                            </div>
+
+                                            <div  style="color:red; font-size:smaller; font-weight:bold;">***SSG SRA Mockup does not save SRA results to the database, it is for testing purposes only. Please use the SSG SRA to save the SRA results to the database.</div>
+
+                                            
+                                            <div style="text-align:right; padding:10px;">
+                                                <button type="submit" ng-click="requestInfo.onNext()" class="btn btn-primary" ng-disabled="submitWhenFormReady || projectInfo.srainfoForm.$invalid">Next</button>
+                                            </div>
+                                        </formly-form>
+                                        
+
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <div tab-detail data-title="{{ tab2.title }}" name="{{ tab2.title }}" bs-pane style="width:100%;  padding:5px; border-left: 1px solid lightgray; border-right: 1px solid lightgray" disabled="{{ tab2.disabled }}">
+                                <div>
+                                    <form name="newrequestForm">
+                                        <table style="width:100%; height:80%;" class="nav nav-tabs ">
+                                            <tr>
+                                                <td style="width:87%; height:90%" class="tableWholeBorder">
+
+                                                    <div class="text-center" ng-show="SelTIndex == $index" ng-repeat="item2 in riskfactor">
+                                                        <div class="guidelines">
+                                                            {{item2.sucesivo}} -  {{item2.riskfactor}}
+                                                        </div>
+
+                                                        <label style="font-size:smaller; padding-left:20px; margin-bottom: 15px;">
+                                                            {{item2.guidance}}
+                                                        </label>
+
+                                                        <div class="text-left">
+                                                            <label style="padding-left:10px; color: green;">Scoring Guidelines:</label>
+                                                            <select ng-model="requestInfo.idValueGuides[$index]" style="width:97%; margin-left:10px; height:35px;" ng-options="scoreguideperRisk.value_guideline for scoreguideperRisk  in scoreguide | filter : istheriskfactor" required></select>
+
+                                                            <!-- <select id="scoreOp" ng-selected="{{selectedBystep}}"   ng-model="requestInfo.srarequestinfo.idValueGuide[$index]" style="width:97%; margin-left:10px; height:35px;" ng-change="scorevalidation(this)" required>-->
+                                                            <!--   <option ng-repeat="x in scoreguide | filter : {'id_riskfactor': '1'} : true">{{x.value_guideline}} -->                                                            <!--   <option ng-repeat="x in scoreguide | filter : {'id_riskfactor': '1'} : true">{{x.value_guideline}}</option> -->
+                                                            <!--<option disabled selected value="">-- Select an option--</option>
+
+                                            <option ng-repeat="scoreguideperRisk in scoreguide | filter : istheriskfactor" value="{{scoreguideperRisk.score}}">{{scoreguideperRisk.value_guideline}}</option>
+
+                                        </select>-->
+                                                        </div>
+                                                        <!-- Recommendations per item-->
+
+
+                                                        <div style="text-align: left; padding-left:10px; padding-bottom:20px;">
+                                                            <label style="padding:2px; color: green;">*Recommendations:</label>
+                                                            <textarea rows="6" style="width:98%;font-size:small; font-weight:bold; line-height:150%; background-color:#ffffe6; " readonly>{{item2.recommendations}}</textarea>
+
+                                                        </div>
+                                                        <!--end reasoning -->
+                                                    </div>
+
+                                                    <div style="text-align:right; margin-bottom:15px; margin-right:15px; float: right;">
+                                                        <!-- -->
+                                                        <button type="button" ng-click="requestInfo.onSubmit()" ng-disabled="newrequestForm.$invalid || validate_srascoreVal" class="btn btn-primary">Score SRA</button>
+                                                    </div>
+
+
+                                                </td>
+                                                <td style="margin-left:20px;">
+                                                    <table ng-repeat="item2 in riskfactor">
+                                                        <tr>
+                                                            <td style="width:12%; font-size:small;" ng-class="getTClass($index)" ng-click="switchTTab($index)">Step {{item2.sucesivo}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <!--  Submit request-->
+                                                    <div style="text-align:right; margin-bottom:15px; margin-right:15px; float: right;">
+                                                        <!-- -->
+                                                        <button ng-show="SelTIndex==20" type="button" ng-click="requestInfo.onSubmit()" ng-disabled="newrequestForm.$invalid || validate_srascoreVal" class="btn btn-primary">Score SRA</button>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+
+                            </div>
+
+
+                            <!--  Actions -->
+                            <div data-title="{{ tab5.title }}" name="{{ tab5.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray" disabled="{{ tab5.disabled }}">
+                                <div class="text-center">
+                                    <br /><br />
+                                    <div>
+                                        <table style="width:99%;" class="display row-border hover order-column table table-striped table-bordered dataTable table-intel">
+                                            <tr>
+                                                <td style="color:green; font-size:smaller; font-weight: bold; width:15%; ">Project: </td>
+                                                
+                                                <td><label style="font-size:smaller; width:15%;  font-weight:bolder; color: green;">SRA Score</label></td>
+                                                <td style="color:green;width:15%;  font-size:smaller; font-weight: bold;">Impact Score</td>
+                                                <td style="color:green; width:15%; font-size:smaller; font-weight: bold;  ">Probability Score</td>
+                                                <td><label style="font-size:smaller;width:40%;  color: darkgreen;">PSEC</label></td>
+                                                
+                                            </tr>
+                                            <tr ng-hide="sra_type == 6">
+                                                <td style="font-size:smaller; font-weight: bold; ">MockUp SRA</td>
+                                                <td style="font-weight:bolder; background-color: #0071C5 ; color:white;">{{requestInfo.SRA_Score}}</td>
+                                                <td style="color:darkorange;">{{requestInfo.Impact}}</td>
+                                                
+                                                <td style="color:darkorange;">{{requestInfo.Probability}}</td>
+                                                <td>{{requestInfo.PSEC}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                        
+                                        
+                                       
+                                        
+                                        <table style="width:99%; table-layout: fixed;" id="test" class="table  table-intel ">
+                                            <thead class="text-center">
+                                                <tr>
+                                                    <th style="width:18%; text-align:center;">SDL#</th>
+                                                    <th style="width:18%; text-align:center;">Action</th>
+                                                    <th style="width:30%;">Guidance</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in sdlActions" ng-class="getActionsClass()">
+
+                                                    <td style="width:18%; word-wrap:break-word; text-align:center;">{{item.sdlaction}}</td>
+                                                    <td style="width:18%;word-wrap:break-word;text-align:left;">
+                                                        <div ng-if="item.actionlink != ''">
+                                                            <small><a target="_blank" href="{{item.actionlink}}">{{item.action}}</a></small>
+                                                        </div>
+                                                        <div ng-if="item.actionlink == ''">
+                                                            <small>{{item.action}}</small>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:30%;word-wrap:break-word;text-align:left;">
+                                                        <div ng-if="item.commentlink" !=''>
+                                                            <small><a target="_blank" href="{{item.commentlink}}">{{item.comments}}</a></small>
+                                                        </div>
+                                                        <div ng-if="item.commentlink == ''">
+                                                            <small>{{item.comments}}</small>
+                                                        </div>
+
+                                                    </td>
+                                                    <!-- <td style="width:15%;"><small>{{item.Recommendations}}</small></td> -->
+                                                </tr>
+                                            </tbody>
+                                            <tfoot></tfoot>
+                                        </table>
+                                    </div>
+                                    <br /><br />
+                                </div>
+                            </div>
+                            <!--  End Actions-->
+
+
+                            <div data-title="{{ tab3.title }}" name="{{ tab3.title }}" bs-pane style="border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                            </div>
+
+
+                       
+                    </div>
+                    <!---->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .inputSize {
+        width: 90%;
+    }
+    
+.loader3 {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 100px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+</style>
+

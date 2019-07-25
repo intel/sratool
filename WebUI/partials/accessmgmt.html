@@ -1,0 +1,55 @@
+﻿<div class="row">
+
+    <div class="col-sm-1 col-md-1">
+    </div>
+    <div class="col-sm-2 col-md-2">
+        <div ng-include='"templates/sidenav.html"'></div>
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h4 class="panel-title"><h4>Access Management</h4></div>
+            <div class="panel-body" style="text-align: left;">                
+                <br /><br />
+                <div ng-controller="mgmaccessCtrl as projectInfo1">
+                    <div ng-show="srarole=='15'"  style="width:98%; padding : 20px;">
+                        <form novalidate>
+                            <formly-form model="projectInfo1.srainfo" fields="projectInfo1.srainfoFields" form="projectInfo1.srainfoForm">                               
+                                <table class="table table-bordered table-striped table-intel" style="font-size:smaller; color:#05487E;">
+                                    <thead>
+                                        <tr>
+                                            <!--   <th scope="col">#</th>-->
+                                            <th scope="col">Role</th>
+                                            <th style="text-align:center;" scope="col">Description</th>
+                                            <th style="text-align:center;" scope="col"></th>
+                                            <th style="text-align:center;" scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!--    <th class="danger" scope="row">1</th>-->
+                                            <td>Administrator</td>
+                                            <td><div>This role allows user<li>to delete Not completed SRAs</li><li>Archive existing SRAs</li><li>Add New Administrators</li></ul></div></td>
+                                            <td class="text-center"><button type="submit" ng-click="reqsrarole()" ng-disabled="submitWhenFormReady || projectInfo1.srainfoForm.$invalid" class="btn btn-primary">Set User As Admin</button>  </td>
+                                            <td class="text-center"><button type="submit" ng-click="reqprojectsrarole()" ng-disabled="submitWhenFormReady || projectInfo1.srainfoForm.$invalid" class="btn btn-primary">Remove User From Admin role</button>  </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                                
+                            </formly-form>
+                        </form>
+
+                        <div ng-if="respost == 1" style="color:darkgreen; text-align:center; font-weight:bold;">User Has been <b>Added to Admin Role</b></div>
+                        <div ng-if="respost == 2" style="color:darkgreen; text-align:center; font-weight:bold;">User Has been <b>Removed from Admin Role</b></div>
+                    </div>
+                </div>
+                 
+
+                <div ng-show="srarole != '15'" style="width:98%; padding : 20px;color:red; text-align:center;">
+                    You have to be an admin in order to add users to the Admin Role
+                </div>
+
+                
+              
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+INSTALL The dependency from 
+
+/*!
+ * angular-datatables - v0.5.5
+ * https://github.com/l-lin/angular-datatables
+ * License: MIT
+ */

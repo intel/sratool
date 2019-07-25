@@ -1,0 +1,21 @@
+NVD3 Install from 
+/*
+https://github.com/krispo/angular-nvd3
+krispo/angular-nvd3 is licensed under the
+
+MIT License
+*/
+
+
+d3 install from 
+
+/*
+
+https://github.com/d3/d3
+
+d3/d3 is licensed under the
+
+BSD 3-Clause "New" or "Revised" License
+A permissive license similar to the BSD 2-Clause License, but with a 3rd clause that prohibits others from using the name of the project or its contributors to promote derived products without written consent.
+
+*/

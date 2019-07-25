@@ -1,0 +1,69 @@
+.rowselected {
+    background-color: #6ccbfb;
+    color: #fff;    
+}
+.altrowselected {
+    background-color: #6ccbfb;
+    color: #fff;    
+}
+.srameter
+{  
+  background-image: url("../images/srameter.png");     
+}
+
+.ownerdetailstyle {
+    background-color: #6ccbfb;
+}
+
+.container {
+	background-color: #fcfdff;	 
+	padding: 20px;
+	top: 20px;
+    width:90%;	  
+}
+
+.sra-sidenav {
+	background-color: red;
+}
+
+.sra-panel-body {
+  padding: 15px; 
+  background-color: #edeff0;
+  
+  }
+  .panel-body:before,
+  .panel-body:after {
+    content: " ";
+    display: table; }
+  .panel-body:after {
+    clear: both; }
+    
+.sra-panel-footer {
+  padding: 10px 15px;
+  background-color: #edeff0;
+  border-top: 1px solid #b1babf;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px; }
+
+.sra-panel-heading {
+  padding: 10px 15px;
+  background-color: #edeff3;
+  border-top: 1px solid #b1babf;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px; }
+
+.sra-navbar-header  
+{
+    background-color: #edeff3;
+    float: left;
+    padding: 14px 15px;
+    font-size: 19px;
+    line-height: 22px;
+    height : 50px; }
+
+.sra-navbar-panelheader  
+{
+    background-color: #edeff3;
+    width: 100%;    
+    height : 50px;
+}

@@ -1,0 +1,38 @@
+﻿<div class="row">
+
+    <div class="col-sm-2 col-md-2">
+        <!-- <div ng-include='"templates/sidenav.html"'></div> -->
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">Summary Reports</h3></div>
+            <div class="panel-body" style="text-align: center;">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <div class="panel panel-default text-left">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>SRA Summary Report</b></h3>
+                                </div>
+                                <div class="panel-body text-left">
+                                    <nvd3 ng-controller="summaryStatusCtrl" options="options" data="data"></nvd3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="panel panel-default text-left">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>WhiteList Summary Report</b></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <nvd3 ng-controller="summaryStatusCtrl" options="options" data="data2"></nvd3>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

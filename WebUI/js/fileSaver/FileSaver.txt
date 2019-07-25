@@ -1,0 +1,8 @@
+Install or pull FileSaver from 
+
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js 
+The MIT License
+
+Copyright © 2016 Eli Grey.
+
+*/

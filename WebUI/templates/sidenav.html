@@ -1,0 +1,20 @@
+<!-- Site Menu -->
+ 
+ <div  ng-controller="sidenavCtrl">
+	   
+		<!-- Begin sidenav -->
+		
+		<div class="panel sra-sidenav">	
+          				
+		  <div ng-repeat="item in menuItems" ng-class="getHClass()" >{{item.item}} 
+		  <div ng-class="getClass()">					   
+			<ul>
+			  <li ng-repeat="item in item.subitems" ><a href={{item.reflink}}>{{item.item}}</a></li>						  
+			</ul>						
+		  </div>
+		  </div> 
+		 </div>
+		<!-- End sidenav -->
+	    
+	</div>
+<!-- -->

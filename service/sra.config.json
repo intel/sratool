@@ -1,0 +1,7 @@
+{
+ 
+  "logfile":"citagent.log",
+  "msgreturned":"ConfigData",
+  "connstring" : "userSRA:usersra!@tcp(127.0.0.1:3306)",
+  "database"   : "sra_prod"
+}
