@@ -1,4 +1,4 @@
-# SRA Tool - Software Security Risk Assessment Tool  - <b>BETA Version</b>
+# SRA Tool - Software Security Risk Assessment Tool  - <b>Version 1.0.0</b>
 
 The Security  Risk Assessment Tool provides  a structured, repeatable method 
 for evaluating the potential security risk on a Software Project and recommends appropriate security activities.
